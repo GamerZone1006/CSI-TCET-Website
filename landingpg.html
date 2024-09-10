@@ -25,17 +25,15 @@
 <body style="background: linear-gradient(to bottom, rgb(0, 15, 43),rgb(5, 5, 165),rgb(3, 3, 252), rgb(0, 102, 204), rgb(20, 183, 248));">
     <div class="cursor"></div>
     <script>
-        // JavaScript to track mouse movement and apply it to the custom cursor
         document.addEventListener('mousemove', function(e) {
             const cursor = document.querySelector('.cursor');
             
-            // Move the custom cursor div to follow the mouse position
             cursor.style.left = `${e.pageX - cursor.offsetWidth / 2}px`;
             cursor.style.top = `${e.pageY - cursor.offsetHeight / 2}px`;
         });
     </script>
     <!-- Navbar -->
-     <div class="container">
+     <!-- <div class="container"> -->
         <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand d-lg-none" href="#">
@@ -93,20 +91,46 @@
                 </div>
             </div>
         </nav>
-    </div>
+    <!-- </div> -->
     <div class="atf-col-1">
         <div data-w-id="7ad75875-cd0c-a531-39f7-6b88ba906a22" class="atf-h1-wrapper">
-            <h1 class="heading-style-h1" id="dbms-text" style="font-family: Protest Guerrilla;">
-                CSI <br>
+            <h1 class="heading-style-h1" id="dbms-text">
+                <span class="shorform" style="font-family: Protest Guerrilla; font-size: 8rem;">CSI</span>
                 <span class="fullform">COMPUTER SOCIETY OF INDIA</span>
             </h1>
         </div>
         <h2>
             <div class="typing-line">
-                <span class="text-to-type">CHALLENGE • SEIZE • INFLUENCE</span>
+                <span class="text-to-type" style="display: inline-block;">CHALLENGE • SEIZE • INFLUENCE</span>
             </div>
         </h2>
-    </div>
+    </div>    
+
+    <script>
+        function typeEffect(element, speed) {
+            let text = element.innerHTML;
+            element.innerHTML = "";
+            
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else {
+                    element.classList.remove('typing-cursor');
+                }
+            }
+            typing();
+        }
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            let targetElement = document.querySelector(".text-to-type");
+            typeEffect(targetElement, 50); 
+        });
+    </script>
+    
+    
     
     <div class="challenges">
         <div class="col1">
@@ -120,7 +144,6 @@
     <script>
         gsap.registerPlugin(ScrollTrigger, TextPlugin);
     
-        // Animation for the heading
         gsap.from(".text-to-type", {
             opacity: 0,
             x: -60,
@@ -137,7 +160,6 @@
             delay: 1.0,
         });
     
-        // Glowing text animation
         gsap.fromTo(".typing-line",
             { textShadow: "0 -20px 30px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255), 0 20px 40px rgba(0, 255, 255, 0.6)" },
             {
@@ -149,7 +171,6 @@
             }
         );
     
-        // Scroll-triggered image pop-up effect
         gsap.from(".challenges .col1 img", {
             y: 50,
             opacity: 0,
@@ -162,7 +183,6 @@
             }
         });
     
-        // Scroll-triggered typing effect
         gsap.to("#typing-text", {
             text: {
                 value: "CSI-TCET is the student branch of the Computer Society of India (CSI) at Thakur College of Engineering and Technology (TCET), Mumbai. The mission of CSI is to facilitate research, knowledge sharing, learning and innovation, career enhancement and nurturing new talents. Today, CSI has members from all over the nation including famous industry leaders, brilliant scientists and dedicated academicians. CSI-TCET has more than 250 registered members and the chapter is growing day by day. Activities are being continuously planned and conducted and CSI-TCET has further gone on to become one of the most active student organizations at TCET."
@@ -173,7 +193,7 @@
                 toggleActions: "play none none none", 
                 once: true
             },
-            duration: 10, // Longer duration for typing effect
+            duration: 10, 
             ease: "power2.inOut"
         });
     </script>

@@ -37,14 +37,14 @@ h1:hover ~ .cursor {
               0 0 40px 20px rgba(255, 158, 255, 0.6);
 }
 
-.container{
+/* .container{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-top: 20px; */
+    margin-top: 20px;
     position: relative;
     z-index: 10;
-}
+} */
 
 .atf-col-1 {
   position: relative; /* Set position to relative for the parent */
@@ -126,7 +126,7 @@ h1 span{
   color: transparent; */
   display: inline-block;
   color: black;
-  text-shadow: 0 0 10px white;
+  text-shadow: 0 0 20px white;
   font-family: "Handjet";
 }
 h2 {
@@ -137,7 +137,7 @@ h2 {
 .navbar {
   /* background: rgba(255, 255, 255, 0.1); 
   backdrop-filter: blur(10px);  */
-  width: 70vw;
+  width: 99vw;
   box-shadow: 4px 4px 10px black; 
   border-radius: 10px; 
   /* border: 1px solid rgba(255, 255, 255, 0.18);  */
@@ -161,35 +161,79 @@ h2 {
   background: rgba(255, 255, 255, 0.3); 
 } */
 
-.challenges{
+
+
+.challenges {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  padding: 20px;
 }
+
+/* Style for the Image Column */
 .challenges .col1 img {
-  height: 100%;
   width: 40vw;
+  max-width: 500px; /* Maximum size to ensure the image doesn't get too large */
   border-radius: 10px;
   box-shadow: 0 0 30px black;
-  transition: all 0.5s ease-out; /* Reduced duration for smoother effect */
+  transition: all 0.5s ease-out;
 }
 
 .challenges .col1 img:hover {
-  /* width: 41vw;  */
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px black; 
+  transform: translateY(-10px) scale(1.05); /* Pop-up and slight scale effect */
+  box-shadow: 0 0 40px black;
 }
 
-.challenges .col2{
-  /* height: 100%; */
+/* Style for the Text Column */
+.challenges .col2 {
   width: 40vw;
-  text-align: center;
+  max-width: 500px; /* Ensure the text doesn't become too wide */
+  text-align: left;
   font-size: 1.2rem;
+  line-height: 1.6;
+  padding: 10px;
+  color: white;
+  text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: whitesmoke;
 }
+
+/* Responsive Styles for Tablets */
+@media (max-width: 768px) {
+  .challenges {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center the text on smaller screens */
+  }
+
+  .challenges .col1 img {
+    width: 80vw;
+    height: auto; /* Ensure proper aspect ratio */
+    margin-bottom: 20px; /* Add space between image and text */
+  }
+
+  .challenges .col2 {
+    width: 80vw;
+    font-size: 1.1rem; /* Slightly reduce font size */
+  }
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 480px) {
+  .challenges .col1 img {
+    width: 90vw;
+    height: auto; /* Make sure the image maintains its aspect ratio */
+  }
+
+  .challenges .col2 {
+    width: 90vw;
+    font-size: 1rem; /* Reduce font size further on small screens */
+  }
+}
+
 canvas {
   display: block;
   position: absolute;
